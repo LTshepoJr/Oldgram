@@ -28,3 +28,47 @@ const posts = [
     likes: 152,
   },
 ];
+
+const container = document.getElementById("inner");
+
+const display = posts.map(
+  ({ name, username, location, avatar, post, comment, likes }) => {
+    const render = `<div class="post-container">
+      <section class="post">
+        <div>
+          <img
+            class="profile-picture side-padding"
+            src="${avatar}"
+            alt="${avatar}"
+          />
+          <div>
+            <p class="font-bold">${name}</p>
+            <p>${location}</p>
+          </div>
+        </div>
+        <img src="${post}" alt="${post}" />
+      </section>
+      <section class="interactions side-padding">
+        <div>
+          <img
+            src="/images/icon-heart.png"
+            alt="Black icon of a heart representing a like or favorite action."
+          />
+          <img
+            src="/images/icon-comment.png"
+            alt="Black icon of a speech bubble representing a comment or message."
+          />
+          <img
+            src="/images/icon-dm.png"
+            alt="Black icon of a paper airplane representing a direct message or send feature"
+          />
+        </div>
+        <p class="font-bold">${likes} likes</p>
+        <p><span class="font-bold">${username}</span> ${comment}</p>
+      </section>
+    </div>`;
+    return render;
+  }
+);
+
+container.innerHTML = display;
