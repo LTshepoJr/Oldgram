@@ -7,15 +7,17 @@ body {
 
 :root {
   --profile-pic-size: 75px;
+  --border: 2px solid #b9b8b8;
 }
 
 .container {
   margin: 0 auto;
   max-width: 663px;
+  border-bottom: var(--border);
 }
 
 header {
-  border-bottom: 2px solid #b9b8b8;
+  border-bottom: var(--border);
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -36,10 +38,7 @@ header {
   margin-top: 40px;
 }
 
-.post > div > img {
-  border-radius: 50%;
-  width: var(--profile-pic-size);
-  height: var(--profile-pic-size);
+.side-padding {
   padding: 0 10px;
 }
 
@@ -57,7 +56,6 @@ header {
 }
 
 .interactions {
-  padding: 0 10px;
   font-size: 1.1rem;
 }
 
