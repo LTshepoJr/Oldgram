@@ -7,17 +7,15 @@ body {
 
 :root {
   --profile-pic-size: 75px;
-  --border: 2px solid #b9b8b8;
 }
 
 .container {
   margin: 0 auto;
   max-width: 663px;
-  border-bottom: var(--border);
 }
 
 header {
-  border-bottom: var(--border);
+  border-bottom: 2px solid #c6c6c6;
   display: flex;
   justify-content: space-between;
   padding: 10px;
