@@ -2,6 +2,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+  max-width: 663px;
+  margin: 0 auto;
+  font-family: "Source Sans 3", sans-serif;
 }
 
 header {
@@ -12,7 +15,7 @@ header {
 }
 
 img {
-  width: 100px;
+  width: 50px;
 }
 
 .logo {
@@ -23,4 +26,45 @@ img {
   border-radius: 50%;
   width: 100px;
   height: 100px;
+}
+
+.post > div {
+  display: flex;
+  margin-top: 40px;
+}
+
+.post > div > img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  padding: 0 10px;
+}
+
+.post > img {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.post > img:hover {
+  cursor: pointer;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.interactions {
+  padding: 0 10px;
+  font-size: 1.1rem;
+}
+
+.interactions > div > img {
+  padding-right: 5px;
+  transition: all 0.3s ease;
+}
+
+.interactions > div > img:hover,
+.interactions > div > img:active {
+  opacity: 40%;
+  cursor: pointer;
 }
