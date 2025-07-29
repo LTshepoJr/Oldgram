@@ -2,9 +2,16 @@ html,
 body {
   margin: 0;
   padding: 0;
-  max-width: 663px;
-  margin: 0 auto;
   font-family: "Source Sans 3", sans-serif;
+}
+
+:root {
+  --profile-pic-size: 75px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 663px;
 }
 
 header {
@@ -20,8 +27,8 @@ header {
 
 .profile-picture {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: var(--profile-pic-size);
+  height: var(--profile-pic-size);
 }
 
 .post > div {
@@ -31,8 +38,8 @@ header {
 
 .post > div > img {
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: var(--profile-pic-size);
+  height: var(--profile-pic-size);
   padding: 0 10px;
 }
 
