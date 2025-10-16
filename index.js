@@ -29,46 +29,74 @@ const posts = [
   },
 ];
 
-const container = document.getElementById("inner");
+const container = document.getElementById("content");
 
-const display = posts.map(
-  ({ name, username, location, avatar, post, comment, likes }) => {
-    const render = `<div class="post-container">
-      <section class="post">
-        <div>
-          <img
-            class="profile-picture side-padding"
-            src="${avatar}"
-            alt="${avatar}"
-          />
-          <div>
-            <p class="font-bold">${name}</p>
-            <p>${location}</p>
-          </div>
-        </div>
-        <img src="${post}" alt="${post}" />
-      </section>
-      <section class="interactions side-padding">
-        <div>
-          <img
-            src="/images/icon-heart.png"
-            alt="Black icon of a heart representing a like or favorite action."
-          />
-          <img
-            src="/images/icon-comment.png"
-            alt="Black icon of a speech bubble representing a comment or message."
-          />
-          <img
-            src="/images/icon-dm.png"
-            alt="Black icon of a paper airplane representing a direct message or send feature"
-          />
-        </div>
-        <p class="font-bold">${likes} likes</p>
-        <p><span class="font-bold">${username}</span> ${comment}</p>
-      </section>
-    </div>`;
-    return render;
-  }
-);
+// clear container
+container.textContent = "";
 
-container.innerHTML = display;
+// build each post safely
+posts.forEach(({ name, username, location, avatar, post, comment, likes }) => {
+  const postContainer = document.createElement("div");
+  postContainer.className = "post-container";
+
+  // --- Post section ---
+  const postSection = document.createElement("section");
+  postSection.className = "post";
+
+  const headerDiv = document.createElement("div");
+
+  const profileImg = document.createElement("img");
+  profileImg.className = "profile-picture side-padding";
+  profileImg.src = avatar;
+  profileImg.alt = `${name}'s profile picture`;
+
+  const infoDiv = document.createElement("div");
+  const nameP = document.createElement("p");
+  nameP.className = "font-bold";
+  nameP.textContent = name;
+
+  const locationP = document.createElement("p");
+  locationP.textContent = location;
+
+  infoDiv.append(nameP, locationP);
+  headerDiv.append(profileImg, infoDiv);
+
+  const postImg = document.createElement("img");
+  postImg.src = post;
+  postImg.alt = `${name}'s post`;
+
+  postSection.append(headerDiv, postImg);
+
+  // --- Interactions section ---
+  const interactions = document.createElement("section");
+  interactions.className = "interactions side-padding";
+
+  const iconsDiv = document.createElement("div");
+  const icons = [
+    { src: "/images/icon-heart.png", alt: "heart icon" },
+    { src: "/images/icon-comment.png", alt: "comment icon" },
+    { src: "/images/icon-dm.png", alt: "direct message icon" },
+  ];
+  icons.forEach(({ src, alt }) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = alt;
+    iconsDiv.appendChild(img);
+  });
+
+  const likesP = document.createElement("p");
+  likesP.className = "font-bold";
+  likesP.textContent = `${likes} likes`;
+
+  const commentP = document.createElement("p");
+  const userSpan = document.createElement("span");
+  userSpan.className = "font-bold";
+  userSpan.textContent = username + " ";
+  const commentText = document.createTextNode(comment);
+  commentP.append(userSpan, commentText);
+
+  interactions.append(iconsDiv, likesP, commentP);
+
+  postContainer.append(postSection, interactions);
+  container.appendChild(postContainer);
+});
